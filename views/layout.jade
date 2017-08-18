@@ -3,9 +3,9 @@ html
   head
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
-    link(rel='stylesheet', href='/stylesheets/chunkfive-fontface.css')
   body
     header
+    //
       nav
         ul
           li 
@@ -14,16 +14,10 @@ html
             a(href="/about") About
           li 
             a(href="/contact") Contact
+          li
+            a(href="/newuser") Make Account
     section#wrapper
         block content
-        footer 
-          section.css-table
-            section.four-column
-              section.cell
-                p Mauris porttitor <br />felis eu leo aliquet<br /> ac rutrum odio aliquet
-              section.cell
-                p Mauris porttitor <br />felis eu leo aliquet<br /> ac rutrum odio aliquet
-              section.cell
-                p Mauris porttitor <br />felis eu leo aliquet<br /> ac rutrum odio aliquet
-              section.cell
-                p Mauris porttitor <br />felis eu leo aliquet<br /> ac rutrum odio aliquet
+        block footer 
+    script(src='http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js')
+    script(src='/javascripts/global.js')
