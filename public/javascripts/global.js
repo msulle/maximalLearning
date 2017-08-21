@@ -1,4 +1,4 @@
-// Userlist data array for fillin in info box
+// Userlist data array for filling in info box
 var userListData = [];
 
 $(document).ready(function() {
@@ -9,6 +9,8 @@ $(document).ready(function() {
     $('#btnAddUser').on('click', addUser);
 
     $('#userList table tbody').on('click', 'td a.linkdeleteuser', deleteUser);
+
+    $('#btnAddDefs').on('click', addDefinitions)
 });
 
 function populateTable() {
@@ -95,4 +97,42 @@ function deleteUser() {
     else {
         return false;
     }
+};
+
+function addDefinitions() {
+  event.preventDefault();
+  
+  var input = $('fieldset textarea#inputDefinitions').val();
+  
+  if(input === '') {
+    alert("c'mon, I know you've got something to enter...");
+    return false;
+  }
+
+  var today = new Date();
+  var foo = input.split(/\r?\n/);
+
+  foo.forEach(function(element) {
+    var defn = element.split(':');
+    var newdef = {
+      'term': defn[0], 
+      'definition': defn[1],
+      'userid': 'insert id here',
+      'date': `${today.getDate()}:${today.getMonth()}:${today.getFullYear()}`
+    };
+
+    $.ajax({
+      type: 'POST',
+      data: newdef,
+      url: 'users/adddefinitions',
+      dataType: 'JSON'
+    }).done(function(response) {
+      if (response.msg === '') {
+        $('fieldset textarea').val('');
+      }
+      else {
+        alert(`houston, we have a problem...\n${response.msg}`);
+      }
+    });  
+  });
 };

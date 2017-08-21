@@ -28,4 +28,12 @@ router.delete('/deleteuser/:id', function(req, res) {
   });
 });
 
+router.post('/adddefinitions', function(req, res) {
+  var db = req.db;
+  var collection = db.get('definitions');
+  collection.insert(req.body, function(err, result) {
+    res.send((err === null) ? {msg: ''} : {msg:`error: ${err}`});
+  });
+});
+
 module.exports = router;

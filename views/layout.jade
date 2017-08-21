@@ -1,23 +1,22 @@
 doctype
 html
   head
-    title= title
+    title= "mL"
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
     header
-    //
-      nav
-        ul
-          li 
-            a(href="/") Home
-          li 
-            a(href="/about") About
-          li 
-            a(href="/contact") Contact
-          li
-            a(href="/newuser") Make Account
+      div#head
+        h1= "mL"
+      nav#menu
+        navbtn
+          a(href="/") home
+        navbtn
+          a(href="/new") new
+        navbtn
+          a(href="/review") review
     section#wrapper
         block content
-        block footer 
+    footer#foot
+      p created by Meagan Sullivan, 2017
     script(src='http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js')
     script(src='/javascripts/global.js')

@@ -9,7 +9,7 @@ var stylus = require('stylus');
 // database
 var mongo = require('mongodb');
 var monk = require('monk');
-var db = monk('localhost:27017/testDB');
+var db = monk('localhost:27017/mLdb');
 
 var index = require('./routes/index');
 var users = require('./routes/users');

@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  br
+  h2 What have you learned?
+  br
+  
+  fieldset
+    //input#inputDefinitions(type='text', placeholder='{term} : {definition} \\n')
+    textarea#inputDefinitions(cols='120', rows='20', autofocus, placeholder='[term]:[definition] \\n')
+    br
+    button#btnAddDefs Done
