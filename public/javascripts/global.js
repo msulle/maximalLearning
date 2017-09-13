@@ -52,10 +52,7 @@ function addUser(event) {
         var newUser = {
             'username': $('#addUser fieldset input#inputUserName').val(),
             'email': $('#addUser fieldset input#inputUserEmail').val(),
-            'fullname': $('#addUser fieldset input#inputUserFullname').val(),
-            'age': $('#addUser fieldset input#inputUserAge').val(),
-            'location': $('#addUser fieldset input#inputUserLocation').val(),
-            'gender': $('#addUser fieldset input#inputUserGender').val()
+            'password': $('#addUser fieldset input#inputUserPassword').val()
         }
 
         $.ajax({
@@ -101,24 +98,30 @@ function deleteUser() {
 
 function addDefinitions() {
   event.preventDefault();
-  
+
   var input = $('fieldset textarea#inputDefinitions').val();
-  
+
   if(input === '') {
     alert("c'mon, I know you've got something to enter...");
     return false;
   }
 
   var today = new Date();
+  var dd = today.getDate();
+  dd = dd < 10 ? '0'+dd : dd;
+  var mm = today.getMonth()+1; //January is 0!
+  mm = mm < 10 ? '0'+mm : mm;
+  var yyyy = today.getFullYear();
+
   var foo = input.split(/\r?\n/);
 
   foo.forEach(function(element) {
     var defn = element.split(':');
     var newdef = {
-      'term': defn[0], 
+      'term': defn[0],
       'definition': defn[1],
-      'userid': 'insert id here',
-      'date': `${today.getDate()}:${today.getMonth()}:${today.getFullYear()}`
+      'userid': 'insert id here',   //make users database to map _id to username?
+      'date': `${dd}:${mm}:${yyyy}`
     };
 
     $.ajax({
@@ -133,6 +136,6 @@ function addDefinitions() {
       else {
         alert(`houston, we have a problem...\n${response.msg}`);
       }
-    });  
+    });
   });
 };
